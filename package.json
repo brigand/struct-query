@@ -1,7 +1,7 @@
 {
   "name": "struct-query",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Frankie Bagnardi <f.bagnardi@gmail.com>",
   "license": "MIT",
   "devDependencies": {

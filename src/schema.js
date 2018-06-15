@@ -6,8 +6,10 @@ var bs58 = require('bs58');
 var ReadState = state.ReadState;
 var WriteState = state.WriteState;
 
-function buildSchema(items) {
+function buildSchema(items, opts) {
   if (!Array.isArray(items)) throw new Error('Invalid schema. Must be an array');
+
+  var idType = opts && opts.idType ? types[opts.idType] : types.u8;
 
   var results = [];
   var nameToResult = Object.create(null);
@@ -36,7 +38,7 @@ function buildSchema(items) {
 
       var value = data[result.name];
      
-      types.u16.ser(state, result.id);
+      idType.ser(state, result.id);
       result.type.ser(state, value);
     });
 
@@ -53,7 +55,7 @@ function buildSchema(items) {
     let remainingIterations = 10000;
     while (!state.isAtEnd() && remainingIterations > 0) {
       remainingIterations -= 1;
-      var id = types.u16.deser(state);
+      var id = idType.deser(state);
       var result = has.call(idToResult, String(id)) && idToResult[id];
 
 
