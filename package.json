@@ -6,5 +6,8 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^23.1.0"
+  },
+  "dependencies": {
+    "bs58": "^4.0.1"
   }
 }
