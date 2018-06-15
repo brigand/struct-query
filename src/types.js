@@ -79,10 +79,11 @@ var types = {
     deser: function (state) {
       var len = types.u16.deser(state);
       var buf = new ArrayBuffer(len);
+      var view = new Uint8Array(buf);
       for (let i = 0; i < len; i += 1) {
-        buf[i] = state.takeByte();
+        view[i] = state.takeByte();
       }
-      return stringUtils.bufToStr(buf);
+      return stringUtils.bufToStr(view);
     }
   },
 };

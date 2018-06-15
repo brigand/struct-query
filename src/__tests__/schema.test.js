@@ -70,7 +70,6 @@ describe(`strToData`, () => {
     var str = schema.dataToStr(value);
     var reversed = schema.strToData(str);
     expect(reversed).toEqual(value)
-    
   });
 });
 
