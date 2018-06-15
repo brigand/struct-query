@@ -6,12 +6,16 @@ function ReadState(buf) {
 }
 
 ReadState.prototype.takeByte = function() {
-  if (this.offset >= this.buf.length) {
+  if (this.offset >= this.buf.byteLength) {
     throw new Error('Tried to read past end of buffer');
   }
   var value = this._view[this.offset];
   this.offset += 1;
   return value;
+}
+
+ReadState.prototype.isAtEnd = function() {
+  return this.offset >= this.buf.byteLength;
 }
 
 
